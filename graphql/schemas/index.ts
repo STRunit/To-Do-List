@@ -3,7 +3,7 @@ import { gql } from "graphql-tag";
 export const typeDefs = gql`
   scalar Date
 
-  type Task {
+  type TaskModel {
     _id: ID!
     taskName: String!
     priority: Int!
@@ -26,13 +26,13 @@ export const typeDefs = gql`
 
   type Query {
     helloQuery: String
-    getAllTasks: [Task!]!
-    getDoneTasks: [Task!]!
+    getAllTasks: [TaskModel!]!
+    getDoneTasks: [TaskModel!]!
   }
 
   type Mutation {
     sayHello(name: String!): String
-    addTask(input: addTaskInput!): Task
-    updateTask(input: updateTaskInput!): Task
+    addTask(input: addTaskInput!): TaskModel!
+    updateTask(input: updateTaskInput!): TaskModel!
   }
 `;

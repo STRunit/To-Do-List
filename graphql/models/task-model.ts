@@ -16,12 +16,12 @@ const taskSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: new Date,
+    default: new Date(),
   },
   updatedAt: {
     type: Date,
-    default: new Date,
+    default: new Date(),
   },
 });
 
-export const Task = mongoose.models.Task || model("Task", taskSchema);
+export const TaskModel = mongoose.models.Task || model("Task", taskSchema);

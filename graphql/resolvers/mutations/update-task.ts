@@ -1,13 +1,13 @@
-import { MutationResolvers } from "@/generated";
-import { Task } from "@/graphql/models";
+import { UpdateTaskInput } from "@/generated";
+import { TaskModel } from "@/graphql/models";
 
-export const updateTask: MutationResolvers["updateTask"] = async (
+export const updateTask = async (
   _: unknown,
-  { input }
+  { input }: { input: UpdateTaskInput }
 ) => {
   try {
     const { taskName, priority, isDone } = input;
-    const updatedTask = await Task.findByIdAndUpdate(
+    const updatedTask = await TaskModel.findByIdAndUpdate(
       { _id: input.taskId },
       {
         taskName,
@@ -23,6 +23,6 @@ export const updateTask: MutationResolvers["updateTask"] = async (
     }
     return updatedTask;
   } catch (error) {
-    throw new Error("Task update failed");
+    throw new Error("Failed to update task");
   }
 };
